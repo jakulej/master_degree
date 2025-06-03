@@ -9,6 +9,5 @@ def get_json():
 
 @app.route("/file", methods=["POST"])
 def get_file():
-    data = request.data
-    print(data)
+    file = request.files["file"]
     return "OK",200
