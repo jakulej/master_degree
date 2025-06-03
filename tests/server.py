@@ -3,7 +3,12 @@ import time
 app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
-def hello_world():
+def get_json():
     data = request.get_json()
-    time.sleep(1)
-    return "<p>Hello, World!</p>"
+    return "OK",200
+
+@app.route("/file", methods=["POST"])
+def get_file():
+    data = request.data
+    print(data)
+    return "OK",200

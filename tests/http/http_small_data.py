@@ -1,31 +1,71 @@
 import httpx
 import time
 import json
+import subprocess
+
+
 
 
 URL = 'http://127.0.0.1:5000'
-OUTPUT_FILE = "http_small.csv"
 
-with open(OUTPUT_FILE, "w") as f:
-    f.write("request_number,time_ms\n")
+def simple_reqest(i,output_file,url):
+    with open('data/small_data.json') as file:
+        small_data = json.load(file)
 
-with open('data/small_data.json') as file:
-    small_data = json.load(file)
+    output_file = "output/http_simple_small.csv"
+    with open(output_file, "w") as f:
+        f.write("request_number,time_ms\n")
 
-def test(i):
     for n in range(i):
-        #client = httpx.Client(http1=True, timeout=5)
         start = time.perf_counter()
-        response = httpx.post('http://127.0.0.1:5000',headers={"Connection": "close"},json=small_data)
-
-        #response = client.post(URL, json=small_data)
-
-
+        response = httpx.post(url,json=small_data)
         end = time.perf_counter()
-        print(response)
-        print((end-start)*1000,"ms")
 
-        with open(OUTPUT_FILE, "a") as f:
+        with open(output_file, "a") as f:
             f.write(f"{n},{(end-start)*1000}\n")
 
-test(100)
+def client_request(i,output_file,url):
+    with open('data/small_data.json') as file:
+        small_data = json.load(file)
+
+    with open(output_file, "w") as f:
+        f.write("request_number,time_ms\n")
+
+    client = httpx.Client()
+
+    for n in range(i):
+        start = time.perf_counter()
+        response = client.post(url,json=small_data)
+        end = time.perf_counter()
+
+        with open(output_file, "a") as f:
+            f.write(f"{n},{(end-start)*1000}\n")
+    client.close()
+
+def test_independent_call(i,output_file):
+    with open(output_file, "w") as f:
+        f.write("request_number,time_ms\n")
+    for n in range(i):
+        result = subprocess.run(["python3", "tests/http/single_request.py", str(n)], capture_output=True, text=True)
+
+def test_big_file(i, output_file,url):
+    with open('data/small_data.json') as file:
+        small_data = json.load(file)
+
+    with open(output_file, "w") as f:
+        f.write("request_number,time_ms\n")
+
+    client = httpx.Client()
+
+    for n in range(i):
+        start = time.perf_counter()
+        response = client.post(url,json=small_data)
+        end = time.perf_counter()
+
+        with open(output_file, "a") as f:
+            f.write(f"{n},{(end-start)*1000}\n")
+    client.close()
+
+test_independent_call(100,"output/http_simple_small_independent.csv")
+simple_reqest(100,"output/http_simple_small.csv",URL)
+client_request(100,"output/http_client_small.csv",URL)
