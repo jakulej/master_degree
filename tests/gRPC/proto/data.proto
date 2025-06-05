@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package jsonservice;
+
+service JsonService {
+  rpc SendJson (JsonDataList) returns (JsonResponse);
+}
+
+message JsonDataList {
+  repeated JsonData items = 1;
+}
+
+message JsonData {
+  string _id = 1;
+  int32 index = 2;
+  string guid = 3;
+  bool isActive = 4;
+  string balance = 5;
+  int32 age = 6;
+  string eyeColor = 7;
+  string name = 8;
+  string gender = 9;
+  string company = 10;
+  string email = 11;
+  string phone = 12;
+  string address = 13;
+  string about = 14;
+  string registered = 15;
+  double latitude = 16;
+  double longitude = 17;
+}
+
+message JsonResponse {
+  string status = 1;
+}
