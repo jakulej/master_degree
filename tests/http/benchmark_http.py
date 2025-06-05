@@ -1,4 +1,3 @@
-import httpx
 import time
 import json
 import subprocess
@@ -18,7 +17,7 @@ def test_independent_call(i,output_file):
     for n in range(i):
         result = subprocess.run(["python3", "tests/http/single_request_small.py", str(n)], capture_output=True, text=True)
 
-def test_big_file(i, output_file,url):
+def test_big_file(i, output_file):
 
     with open(output_file, "w") as f:
         f.write("request_number,time_ms\n")
@@ -28,5 +27,6 @@ def test_big_file(i, output_file,url):
 
 
 #test_independent_call(100,"output/http_simple_small_independent.csv")
-simple_reqest(100)
-session_requests(100)
+#simple_reqest(100)
+#session_requests(100)
+test_big_file(100,"output/http_big.csv")

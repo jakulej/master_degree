@@ -1,14 +1,14 @@
-import httpx
 import time
 import json
-import sys 
+import sys
+import requests
 
-OUTPUT_FILE = "output/http_client_big.csv"
-URL = 'http://127.0.0.1:5000/file'
+OUTPUT_FILE = "output/http_big.csv"
+URL = 'http://127.0.0.1:8000/file'
 
 with open('data/big_file','rb') as big_data:
     start = time.perf_counter()
-    response = httpx.post(URL,files={"file":big_data})
+    response = requests.post(URL,files={"file":big_data})
     end = time.perf_counter()
 
 
