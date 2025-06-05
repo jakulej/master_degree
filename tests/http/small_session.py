@@ -3,6 +3,9 @@ import json
 import sys
 import requests
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 OUTPUT_FILE = "output/http_small_session.csv"
 URL = 'http://127.0.0.1:8000'
 
@@ -14,8 +17,9 @@ with open(OUTPUT_FILE, "w") as f:
 
 start = time.perf_counter()
 session = requests.Session()
-response = session.post(URL,json=small_data)
+response = session.post(URL,json=small_data, headers={"Connection": "keep-alive"})
 end = time.perf_counter()
+print(response.headers)
 
 with open(OUTPUT_FILE, "a") as f:
     f.write(f"{0},{(end-start)*1000}\n")
@@ -23,7 +27,7 @@ with open(OUTPUT_FILE, "a") as f:
 
 for n in range(int(sys.argv[1])-1):
     start = time.perf_counter()
-    response = session.post(URL,json=small_data)
+    response = session.post(URL,json=small_data, headers={"Connection": "keep-alive"})
     end = time.perf_counter()
 
     with open(OUTPUT_FILE, "a") as f:

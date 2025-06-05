@@ -10,7 +10,6 @@ def simple_reqest(request_number):
 
 def session_requests(request_number):
     result = subprocess.run(["python3", "tests/http/small_session.py", str(request_number)], capture_output=True, text=True)
-    print(result)
 
 
 def test_independent_call(i,output_file):
