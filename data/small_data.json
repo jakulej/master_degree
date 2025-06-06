@@ -1,21 +1,20 @@
-[
-  {
-    "_id": "683de5db39e1693e2430bbb8",
-    "index": 0,
-    "guid": "b6f29743-ebe8-4229-aeaf-8281d05f7538",
-    "isActive": false,
-    "balance": "$2,182.65",
-    "age": 27,
-    "eyeColor": "brown",
-    "name": "Mays Rowe",
-    "gender": "male",
-    "company": "ZIORE",
-    "email": "maysrowe@ziore.com",
-    "phone": "+1 (976) 525-3112",
-    "address": "519 Garden Place, Vale, Marshall Islands, 106",
-    "about": "Sunt magna tempor labore est proident deserunt non proident pariatur esse labore voluptate. Eiusmod consequat nulla labore voluptate sunt. Enim eu in nisi do in aliqua culpa anim. Excepteur nulla in nisi fugiat velit deserunt eiusmod ipsum. Magna laboris Lorem laboris laboris eu occaecat nulla. Minim veniam ex incididunt id aute eu reprehenderit eiusmod aliquip. Anim cillum enim et excepteur cupidatat ut aliquip incididunt deserunt sunt amet tempor labore eu.\r\n",
-    "registered": "2023-05-19T08:42:19 -02:00",
-    "latitude": 39.975429,
-    "longitude": 140.989848
-  }
-]
+
+{
+  "_id": "683de5db39e1693e2430bbb8",
+  "index": 0,
+  "guid": "b6f29743-ebe8-4229-aeaf-8281d05f7538",
+  "isActive": false,
+  "balance": "$2,182.65",
+  "age": 27,
+  "eyeColor": "brown",
+  "name": "Mays Rowe",
+  "gender": "male",
+  "company": "ZIORE",
+  "email": "maysrowe@ziore.com",
+  "phone": "+1 (976) 525-3112",
+  "address": "519 Garden Place, Vale, Marshall Islands, 106",
+  "about": "Sunt magna tempor labore est proident deserunt non proident pariatur esse labore voluptate. Eiusmod consequat nulla labore voluptate sunt. Enim eu in nisi do in aliqua culpa anim. Excepteur nulla in nisi fugiat velit deserunt eiusmod ipsum. Magna laboris Lorem laboris laboris eu occaecat nulla. Minim veniam ex incididunt id aute eu reprehenderit eiusmod aliquip. Anim cillum enim et excepteur cupidatat ut aliquip incididunt deserunt sunt amet tempor labore eu.\r\n",
+  "registered": "2023-05-19T08:42:19 -02:00",
+  "latitude": 39.975429,
+  "longitude": 140.989848
+}

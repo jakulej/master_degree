@@ -26,7 +26,7 @@ def test_big_file(i, output_file):
         result = subprocess.run(["python3", "tests/http/single_request_big.py", str(1)], capture_output=True, text=True)
 
 
-#test_independent_call(100,"output/http_simple_small_independent.csv")
-#simple_reqest(100)
-#session_requests(100)
+test_independent_call(100,"output/http_simple_small_independent.csv")
+simple_reqest(100)
+session_requests(100)
 test_big_file(100,"output/http_big.csv")
