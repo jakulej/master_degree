@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import data_pb2 as data__pb2
+from . import data_pb2 as data__pb2
 
 GRPC_GENERATED_VERSION = '1.72.1'
 GRPC_VERSION = grpc.__version__
@@ -25,7 +25,7 @@ if _version_not_supported:
     )
 
 
-class JsonServiceStub(object):
+class UserServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -34,43 +34,43 @@ class JsonServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SendJson = channel.unary_unary(
-                '/jsonservice.JsonService/SendJson',
-                request_serializer=data__pb2.JsonDataList.SerializeToString,
-                response_deserializer=data__pb2.JsonResponse.FromString,
+        self.SendUser = channel.unary_unary(
+                '/user.UserService/SendUser',
+                request_serializer=data__pb2.User.SerializeToString,
+                response_deserializer=data__pb2.Response.FromString,
                 _registered_method=True)
 
 
-class JsonServiceServicer(object):
+class UserServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def SendJson(self, request, context):
+    def SendUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_JsonServiceServicer_to_server(servicer, server):
+def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SendJson': grpc.unary_unary_rpc_method_handler(
-                    servicer.SendJson,
-                    request_deserializer=data__pb2.JsonDataList.FromString,
-                    response_serializer=data__pb2.JsonResponse.SerializeToString,
+            'SendUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendUser,
+                    request_deserializer=data__pb2.User.FromString,
+                    response_serializer=data__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'jsonservice.JsonService', rpc_method_handlers)
+            'user.UserService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('jsonservice.JsonService', rpc_method_handlers)
+    server.add_registered_method_handlers('user.UserService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class JsonService(object):
+class UserService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def SendJson(request,
+    def SendUser(request,
             target,
             options=(),
             channel_credentials=None,
@@ -83,9 +83,9 @@ class JsonService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/jsonservice.JsonService/SendJson',
-            data__pb2.JsonDataList.SerializeToString,
-            data__pb2.JsonResponse.FromString,
+            '/user.UserService/SendUser',
+            data__pb2.User.SerializeToString,
+            data__pb2.Response.FromString,
             options,
             channel_credentials,
             insecure,
