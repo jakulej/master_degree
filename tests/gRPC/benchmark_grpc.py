@@ -22,7 +22,7 @@ def stream(request_number):
     result = subprocess.run(["python3", "tests/gRPC/stream_requests.py", str(request_number)], capture_output=True, text=True)
 
 
-stream(100)
-file(100)
-single(100)
-n_times(100)
+#stream(100)
+#file(100)
+#single(100)
+n_times(10)

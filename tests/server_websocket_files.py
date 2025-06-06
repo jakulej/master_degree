@@ -10,12 +10,9 @@ async def client_handler(websocket):
     async for message in websocket:
         if message == b"--end--":
             full_data = buffer.getvalue()
-            #print(full_data)
-            print(f"Odebrano plik ({len(full_data)} bajtów)")
             await websocket.send("OK")
             buffer = io.BytesIO()
         else:
-            #print(message)
             buffer.write(message)
 
 async def main():

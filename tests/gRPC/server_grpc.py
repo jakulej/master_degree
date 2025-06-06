@@ -12,7 +12,6 @@ class UserServiceServicer(data_pb2_grpc.UserServiceServicer):
         return data_pb2.Response(message="OK")
     def StreamUsers(self, request_iterator, context):
         for user in request_iterator:
-            print(f"[StreamUsers] Got: {user.name}")
             yield data_pb2.Response(message="OK")
 
 class FileServiceServicer(data_pb2_grpc.FileServiceServicer):
@@ -20,8 +19,6 @@ class FileServiceServicer(data_pb2_grpc.FileServiceServicer):
         file_bytes = b""
         for chunk in request_iterator:
             file_bytes += chunk.content
-
-        print(f"Received file of size: {len(file_bytes)} bytes")
         return data_pb2.UploadStatus(message="Ok")
 
 def serve():
