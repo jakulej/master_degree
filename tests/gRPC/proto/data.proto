@@ -4,6 +4,11 @@ package user;
 
 service UserService {
   rpc SendUser (User) returns (Response);
+    rpc StreamUsers(stream User) returns (stream Response);
+}
+
+service FileService {
+  rpc Upload(stream FileChunk) returns (UploadStatus);
 }
 
 message User {
@@ -24,6 +29,14 @@ message User {
   string registered = 15;
   double latitude = 16;
   double longitude = 17;
+}
+
+message FileChunk {
+  bytes content = 1;
+}
+
+message UploadStatus {
+  string message = 1;
 }
 
 message Response {

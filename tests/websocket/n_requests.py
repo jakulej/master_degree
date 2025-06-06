@@ -18,7 +18,6 @@ with connect("ws://localhost:8765") as websocket:
     end = time.perf_counter()
 
     with open(OUTPUT_FILE, "a") as f:
-        print("test")
         f.write(f"{0},{(end-start)*1000}\n")
 
     for n in range(int(sys.argv[1])-1):
