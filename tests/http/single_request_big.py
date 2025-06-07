@@ -4,11 +4,11 @@ import sys
 import requests
 
 OUTPUT_FILE = "output/http_big.csv"
-URL = 'http://127.0.0.1:8000/file'
+URL = 'http://192.168.88.2:8000'
 
 with open('data/big_file','rb') as big_data:
     start = time.perf_counter()
-    response = requests.post(URL,files={"file":big_data})
+    response = requests.post(URL+"/file",files={"file":big_data})
     end = time.perf_counter()
 
 

@@ -4,7 +4,7 @@ import sys
 import requests
 
 OUTPUT_FILE = "output/http_small.csv"
-URL = 'http://127.0.0.1:8000'
+URL = 'http://192.168.88.2:8000'
 
 with open('data/small_data.json') as file:
     small_data = json.load(file)

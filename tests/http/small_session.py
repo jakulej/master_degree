@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 OUTPUT_FILE = "output/http_small_session.csv"
-URL = 'http://127.0.0.1:8000'
+URL = 'http://192.168.88.2:8000'
 
 with open('data/small_data.json') as file:
     small_data = json.load(file)
