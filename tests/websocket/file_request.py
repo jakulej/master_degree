@@ -4,13 +4,14 @@ import json
 import sys
 
 OUTPUT_FILE = "output/websocket_big.csv"
+URL = 'ws://192.168.88.2:8765'
 
 
 with open("data/small_data.json", "r") as f:
     data_small = json.load(f)
 
 start = time.perf_counter()
-with connect("ws://localhost:8765") as websocket:
+with connect(URL) as websocket:
     with open("data/big_file", "rb") as f:
         while chunk := f.read(4096):
             websocket.send(chunk)

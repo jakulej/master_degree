@@ -4,13 +4,13 @@ import json
 import sys
 
 OUTPUT_FILE = "output/websocket_single.csv"
-
+URL = 'ws://192.168.88.2:8765'
 
 with open("data/small_data.json", "r") as f:
     data_small = json.load(f)
 
 start = time.perf_counter()
-with connect("ws://localhost:8765") as websocket:
+with connect(URL) as websocket:
     websocket.send(json.dumps(data_small))
     message = websocket.recv()
     end = time.perf_counter()

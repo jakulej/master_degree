@@ -5,6 +5,7 @@ from proto import data_pb2, data_pb2_grpc
 import json
 import time
 import sys
+URL = '192.168.88.2:50051'
 
 
 
@@ -18,7 +19,7 @@ def run():
 
 
     start = time.perf_counter()
-    with grpc.insecure_channel("localhost:50051") as channel:
+    with grpc.insecure_channel(URL) as channel:
         stub = data_pb2_grpc.UserServiceStub(channel)
         start = time.perf_counter()
         user = data_pb2.User(**user_data)
@@ -36,7 +37,6 @@ def run():
                 end = time.perf_counter()
                 with open(output_file, "a") as f:
                     f.write(f"{n+1},{(end-start)*1000}\n")
-
 
 if __name__ == "__main__":
     run()
