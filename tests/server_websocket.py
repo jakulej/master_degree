@@ -10,7 +10,7 @@ async def client_handler(websocket):
         await websocket.send("OK")
 
 async def main():
-    async with serve(client_handler, "localhost", 8765) as server:
+    async with serve(client_handler, "0.0.0.0", 8765) as server:
         await server.serve_forever()
 
 asyncio.run(main())

@@ -8,7 +8,6 @@ from proto import data_pb2, data_pb2_grpc
 class UserServiceServicer(data_pb2_grpc.UserServiceServicer):
     def SendUser(self, request, context):
         data = request
-        print(data)
         return data_pb2.Response(message="OK")
     def StreamUsers(self, request_iterator, context):
         for user in request_iterator:
